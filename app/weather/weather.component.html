@@ -1,0 +1,41 @@
+<div>
+	<div>
+		<form action="#">
+			<input #term (keyup)="search(term.value)" class="txtStyle" type="text" placeholder="Enter the location...">
+		</form>
+	</div>
+</div>
+
+<div *ngIf="items.query?.results?.channel?.astronomy"> <b>Astronomy</b>
+	<ul>
+		<li> <span> <b>Sunrise:</b> {{ items.query?.results?.channel?.astronomy?.sunrise}}</span></li>
+		<li> <span> <b>Sunset:</b> {{ items.query?.results?.channel?.astronomy?.sunset}}</span></li>
+	</ul>
+</div>
+<div *ngIf="items.query?.results?.channel?.astronomy"> <b>Atmosphere</b>
+	<ul>
+		<li> <span> <b>Humidity:</b> {{ items.query?.results?.channel?.atmosphere?.humidity}}</span></li>
+		<li> <span> <b>Pressure:</b> {{ items.query?.results?.channel?.atmosphere?.pressure}}</span></li>
+		<li> <span> <b>Rising:</b> {{ items.query?.results?.channel?.atmosphere?.rising}}</span></li>
+		<li> <span> <b>Visibility:</b> {{ items.query?.results?.channel?.atmosphere?.visibility}}</span></li>
+	</ul>
+</div>
+<div *ngIf="items.query?.results?.channel?.item"> <b>Forecast</b>
+	<ul>
+		<li *ngFor='let forecasts of items.query?.results?.channel?.item?.forecast'> 
+			 <!--<b>Code:</b> <span>{{ forecasts.code}}</span>-->
+			 <b>Date:</b> <span>{{ forecasts.date}}</span>
+			 <b>Day:</b> <span style="width:20px;">{{ forecasts.day}}</span>
+			 <b>High:</b> <span>{{ forecasts.high}}</span>
+			 <b>Low:</b> <span>{{ forecasts.low}}</span>
+			 <b>Weather forecast:</b> <span>{{ forecasts.text}}</span><br/>
+		</li>
+	</ul>
+</div>
+<div *ngIf="items.query?.results?.channel?.location"> <b>Location</b>
+	<ul>
+		<li> <span> <b>City:</b> {{ items.query?.results?.channel?.location?.city}}</span></li>
+		<li> <span> <b>Country:</b> {{ items.query?.results?.channel?.location?.country}}</span></li>
+		<li> <span> <b>Region:</b> {{ items.query?.results?.channel?.location?.region}}</span></li>
+	</ul>
+</div>
